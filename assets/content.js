@@ -1,6 +1,7 @@
 const ELEMENT = {
     ROOT: '#ext-root',
-    POPUP: '#popup-check-words'
+    POPUP: '#popup-check-words',
+    SENTENCE: '#sentence-item',
 }
 
 function createRootElement(callback) {
@@ -39,8 +40,6 @@ function appendTemplate() {
 }
 
 function splitSentences(content) {
-    //let content = `<p>Lãi suất tại Mỹ tăng cao khiến chính phủ nước này tốn nhiều tiền hơn để trả lãi cho những người mua trái phiếu kho bạc</p><p>Việc Mỹ nâng lãi suất 2 năm qua để ghìm lạm phát giúp nhà đầu tư trái phiếu kiếm bộn tiền. Ngược lại, chính phủ phải chi nhiều tiền hơn để trả lãi cho khối nợ công lên tới 34.000 tỷ USD.</p><p>Thống kê của&nbsp;<em>Bloomberg</em>&nbsp;cho thấy trong tháng 3</p><p>khi chính phủ chưa có dấu hiệu giảm chi và Cục Dự trữ liên bang Mỹ (<a href="https://vnexpress.net/chu-de/fed-6150" rel="dofollow" data-itm-source="#vn_source=Detail-KinhDoanh_QuocTe-4743177&amp;vn_campaign=Box-InternalLink&amp;vn_medium=Link-Fed&amp;vn_term=Desktop&amp;vn_thumb=0" data-itm-added="1" data-mce-href="https://vnexpress.net/chu-de/fed-6150">Fed</a>) chần chừ hạ lãi suất.</p><p>nhiều lắm em ơi....</p><p><br></p>`;
-
     let tempDiv = document.createElement("div");
     tempDiv.innerHTML = content;
 
@@ -72,22 +71,25 @@ function observeElement(callback) {
 
 function generateSentencesDOM(sentencesMatched) {
     console.log('sentencesMatched', sentencesMatched)
+
     const $s = sentencesMatched.reduce((total, item, index) => {
+        const isMatchedAll = item.every(item => item?.count > 0)
+        const classSentence = isMatchedAll ? 'tw-border-success-500' : 'tw-border-neutral-300'
 
         const $sentence = item.reduce((s, w) => {
             const count = w?.count || 0
             const isMatched = count > 0
 
-            const tagClass = isMatched ? 'tw-bg-success-400 tw-text-neutral-0' : ''
+            const tagClass = isMatched ? 'tw-border-success-400 tw-bg-success-200' : 'tw-opacity-80 tw-border-neutral-300'
             s += `<div class="ext-word ${tagClass}"><strong>${w?.word}</strong> <span>${count}</span></div>`
             return s
         }, '')
 
-        total += `<div class="sentence-item tw-p-2 tw-flex tw-items-center tw-gap-1 tw-flex-wrap tw-border tw-mb-2 tw-border-neutral-200 tw-rounded-md"><strong>Câu ${index + 1}:</strong> ${$sentence}</div>`
+        total += `<div class="${classSentence} sentence-item tw-shadow-sm tw-p-2 tw-flex tw-items-center tw-gap-1 tw-flex-wrap tw-border tw-mb-2 tw-rounded-md"><strong>Câu ${index + 1}:</strong> ${$sentence}</div>`
         return total
     }, '')
 
-    return `<div class="tw-p-4 list-sentence">${$s}</div>`
+    return `<div class="list-sentence">${$s}</div>`
 }
 
 function getMatchedSentences(_sentences, _contents) {
@@ -98,7 +100,9 @@ function getMatchedSentences(_sentences, _contents) {
             sentence.forEach(item => {
                 const {word} = item
                 item.count = item.count || 0
-                const matches = content.match(new RegExp(word, 'g'));
+                const _content = content.toLowerCase().normalize()
+                const _word = word.toLowerCase().normalize()
+                const matches = _content.match(new RegExp(_word, 'g'));
                 item.count += matches ? matches.length : 0
             })
         })
@@ -113,7 +117,7 @@ function handleChangeContent() {
 
     const sentencesMatched = getMatchedSentences(dummyData, sentencesSplited)
 
-    const $popupElement = $(ELEMENT.POPUP);
+    const $popupElement = $(ELEMENT.SENTENCE);
 
     const $sentences = generateSentencesDOM(sentencesMatched)
     $popupElement.html($sentences)
@@ -121,22 +125,23 @@ function handleChangeContent() {
 
 $(document).ready(function () {
     createRootElement(function () {
-        // injectScriptNew('lib/tailwindcss-3.4.3.js', 'body')
-        // injectScriptNew('injects/tailwind.config.js', 'body')
         appendTemplate()
-        console.log('tailwind222', tailwind)
 
         setTimeout(() => {
             handleChangeContent()
 
-            observeElement(function() {
+            observeElement(function () {
                 handleChangeContent()
             })
 
-
         }, 1000)
 
-
+        $('body').on('click', '#expand-icon', function() {
+            $('#popup-check-words').toggleClass('active')
+        })
+        $('body').on('click', '#close-ext-popup', function() {
+            $('#popup-check-words').toggleClass('active')
+        })
     })
 
 })

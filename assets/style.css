@@ -1,16 +1,51 @@
 @tailwind components;
 @tailwind utilities;
-
-#popup-check-words{
-    width: 500px;
-    height: 300px;
-    background-color: white;
+#ext-root{
     position: fixed;
     top: 0;
     right: 0;
     z-index: 999999;
+}
+
+#ext-verifier-seo{
+    padding: 15px;
+    position: relative;
+}
+#popup-check-words{
+    width: 500px;
+    height: 300px;
+    background-color: white;
+    overflow: hidden;
+    padding: 15px;
+    position: relative;
+    z-index: 9999999;
+}
+#sentence-item{
+    height: 100%;
     overflow-y: auto;
-    @apply tw-shadow-lg tw-rounded-2xl;
+}
+#ext-verifier-seo * {
+ font-family: sans-serif,
+ Segoe UI,
+ Roboto,
+ Oxygen,
+ Ubuntu,
+ Cantarell,
+ Fira Sans,
+ Droid Sans,
+ Helvetica Neue;
+}
+
+#expand-icon{
+    width: 30px;
+    height: 30px;
+    box-shadow: 0 0 16px rgba(0, 0, 0, .2);
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 999999;
 }
 .list-sentence{
     font-size: 12px;
@@ -20,7 +55,7 @@
     display: flex;
     gap: 2px;
     align-items: center;
-    border: 1px solid rgb(11 165 236);
+    border: 1px solid;
 }
 .ext-word strong {
     text-align: center;
@@ -32,4 +67,10 @@
     border-left: 1px solid rgb(11 165 236);
     width: 20px;
     text-align: center;
+}
+.popup-check-words{
+    display: none;
+}
+.popup-check-words.active{
+    display: block;
 }

@@ -15,7 +15,7 @@
         "injects/tailwind.config.js"
       ],
       "matches": [
-        "<all_urls>"
+        "http://localhost/*"
       ],
       "run_at": "document_idle"
     }
@@ -40,6 +40,7 @@
       "resources": [
         "img/logo.png",
         "img/bg.jpg",
+        "img/check.png",
         "img/wait-for-reaction.gif",
         "injects/content-template.html",
         "lib/tailwindcss-3.4.3.js",
