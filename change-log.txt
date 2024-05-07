@@ -1,0 +1,12 @@
+﻿##3.0.2 : PHIÊN BẢN 3 - Cập nhật 16/10/2021
+- BIG UPDATE
+- Bỏ like comment
+- Giao diện mới hoàn toàn, thay nhận diện thương hiệu
+- Sửa tính năng bật cuộn trang
+- Sửa tính năng tải lại
+- Ẩn gọn khi không sử dụng
+- Sửa nút đếm lại
+
+
+##3.0.3 : Cập nhật ngày 27/4/2023
+- Sửa lỗi không chạy trên mobile

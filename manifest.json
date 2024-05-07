@@ -1,0 +1,53 @@
+{
+  "browser_action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "css": [
+        "assets/style.css"
+      ],
+      "js": [
+        "lib/jquery-3.7.1.min.js",
+        "assets/data.js",
+        "assets/content.js",
+        "lib/tailwindcss-3.4.3.js",
+        "injects/tailwind.config.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "description": "...",
+  "homepage_url": "https://www.google.com",
+  "icons": {
+    "128": "img/logo.png",
+    "16": "img/logo.png",
+    "48": "img/logo.png"
+  },
+  "manifest_version": 3,
+  "name": "Etado",
+  "permissions": [
+    "storage",
+    "*://*"
+  ],
+  "update_url": "https://clients2.google.com/service/update2/crx",
+  "version": "3.1.1",
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "img/logo.png",
+        "img/bg.jpg",
+        "img/wait-for-reaction.gif",
+        "injects/content-template.html",
+        "lib/tailwindcss-3.4.3.js",
+        "injects/tailwind.config.js"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
+}
