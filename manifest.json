@@ -1,17 +1,17 @@
 {
-  "browser_action": {
+  "action": {
     "default_popup": "popup.html"
   },
   "content_scripts": [
     {
       "css": [
-        "assets/style.css"
+        "assets/css/style.css"
       ],
       "js": [
-        "lib/jquery-3.7.1.min.js",
-        "assets/data.js",
-        "assets/content.js",
-        "lib/tailwindcss-3.4.3.js",
+        "assets/lib/jquery-3.7.1.min.js",
+        "js/data.js",
+        "js/content-script.js",
+        "assets/lib/tailwindcss-3.4.3.js",
         "injects/tailwind.config.js"
       ],
       "matches": [
@@ -23,27 +23,23 @@
   "description": "...",
   "homepage_url": "https://www.google.com",
   "icons": {
-    "128": "img/logo.png",
-    "16": "img/logo.png",
-    "48": "img/logo.png"
+    "128": "assets/img/check.png",
+    "48": "assets/img/check.png",
+    "16": "assets/img/check.png"
   },
   "manifest_version": 3,
-  "name": "Etado",
-  "permissions": [
-    "storage",
-    "*://*"
-  ],
+  "name": "SEO checker",
   "update_url": "https://clients2.google.com/service/update2/crx",
-  "version": "3.1.1",
+  "version": "1.0.0",
   "web_accessible_resources": [
     {
       "resources": [
-        "img/logo.png",
-        "img/bg.jpg",
-        "img/check.png",
-        "img/wait-for-reaction.gif",
+        "assets/img/logo.png",
+        "assets/img/bg.jpg",
+        "assets/img/check.png",
+        "assets/img/wait-for-reaction.gif",
         "injects/content-template.html",
-        "lib/tailwindcss-3.4.3.js",
+        "assets/lib/tailwindcss-3.4.3.js",
         "injects/tailwind.config.js"
       ],
       "matches": [

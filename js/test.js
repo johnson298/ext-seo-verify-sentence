@@ -35,19 +35,19 @@ const isMatch = (sentence) => sentence.every(item => item?.count > 1)
 //     })
 // })
 
-function getMatchedSentences(_sentences, _contents) {
-    const sentencesClone = JSON.parse(JSON.stringify(_sentences))
-    _contents.forEach(content => {
-        sentencesClone.forEach(sentence => {
-            sentence.forEach(item => {
-                const {word} = item
-                item.count = item.count || 0
-                const matches = content.match(new RegExp(word, 'g'));
-                item.count += matches ? matches.length : 0
-            })
-        })
-    })
-    return sentencesClone
-}
+// function getMatchedSentences(_sentences, _contents) {
+//     const sentencesClone = JSON.parse(JSON.stringify(_sentences))
+//     _contents.forEach(content => {
+//         sentencesClone.forEach(sentence => {
+//             sentence.forEach(item => {
+//                 const {word} = item
+//                 item.count = item.count || 0
+//                 const matches = content.match(new RegExp(word, 'g'));
+//                 item.count += matches ? matches.length : 0
+//             })
+//         })
+//     })
+//     return sentencesClone
+// }
 
-console.log(getMatchedSentences(sentences, contents))
+// console.log(getMatchedSentences(sentences, contents))

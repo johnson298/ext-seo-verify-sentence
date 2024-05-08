@@ -1,7 +1,6 @@
-console.log('tailwind11', tailwind)
 tailwind.config = {
     prefix: 'tw-',
-    content: ['../assets/*'],
+    content: ['../js/*'],
     preflight: false,
     theme: {
         extend: {
