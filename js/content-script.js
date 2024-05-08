@@ -146,7 +146,9 @@ $(document).ready(function () {
     }
 
     detectEditor(function(){
+
         const contentJs = new ContentsJs()
+
         contentJs.createRootElement(function () {
             contentJs.appendTemplate()
 
