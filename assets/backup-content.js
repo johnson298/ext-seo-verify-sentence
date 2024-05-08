@@ -123,25 +123,25 @@
 //     $popupElement.html($sentences)
 // }
 
-$(document).ready(function () {
-    createRootElement(function () {
-        appendTemplate()
-
-        setTimeout(() => {
-            handleChangeContent()
-
-            observeElement(function () {
-                handleChangeContent()
-            })
-
-        }, 1000)
-
-        $('body').on('click', '#expand-icon', function() {
-            $('#popup-check-words').toggleClass('active')
-        })
-        $('body').on('click', '#close-ext-popup', function() {
-            $('#popup-check-words').toggleClass('active')
-        })
-    })
-
-})
+// $(document).ready(function () {
+//     createRootElement(function () {
+//         appendTemplate()
+//
+//         setTimeout(() => {
+//             handleChangeContent()
+//
+//             observeElement(function () {
+//                 handleChangeContent()
+//             })
+//
+//         }, 1000)
+//
+//         $('body').on('click', '#expand-icon', function() {
+//             $('#popup-check-words').toggleClass('active')
+//         })
+//         $('body').on('click', '#close-ext-popup', function() {
+//             $('#popup-check-words').toggleClass('active')
+//         })
+//     })
+//
+// })
